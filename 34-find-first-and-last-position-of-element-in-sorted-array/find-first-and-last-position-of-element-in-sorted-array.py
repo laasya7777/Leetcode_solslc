@@ -1,0 +1,34 @@
+class Solution:
+    def searchRange(self, arr: List[int], target: int) -> List[int]:
+        def lower_bound(arr, target):
+            low = 0 
+            high = len(arr) - 1 
+            ans = len(arr)
+            while low <= high:
+                mid = (low + high) // 2 
+                if arr[mid] >= target:
+                    ans = mid 
+                    high = mid - 1 
+                else:
+                    low = mid + 1 
+            return ans 
+
+        def upper_bound(arr, target):
+            low = 0 
+            high = len(arr) - 1 
+            ans = len(arr)
+            while low <= high:
+                mid = (low + high) // 2 
+                if arr[mid] > target:
+                    ans = mid 
+                    high = mid - 1 
+                else:
+                    low = mid + 1 
+            return ans 
+
+        if len(arr) == 0 or target not in arr:
+            return [-1, -1]
+
+        first = lower_bound(arr, target)
+        last = upper_bound(arr, target) - 1 
+        return [first, last]
