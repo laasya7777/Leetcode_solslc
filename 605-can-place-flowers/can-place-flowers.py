@@ -3,10 +3,10 @@ class Solution:
         length = len(flowerbed)
         for i in range(length):
             if flowerbed[i] == 0:
-                left_empty = (i == 0) or (flowerbed[i - 1] == 0)
-                right_empty = (i == length - 1) or (flowerbed[i + 1] == 0)
-                
-                if left_empty and right_empty:
+                left_is_empty = (i == 0) or (flowerbed[i - 1] == 0)
+                right_is_empty = (i == length - 1) or (flowerbed[i + 1] == 0)
+    
+                if left_is_empty and right_is_empty:
                     flowerbed[i] = 1
                     n -= 1
                     if n == 0:
