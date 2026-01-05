@@ -1,16 +1,20 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
+        comb = list(range(1, k + 1))
         res = []
 
-        def backtrack(start, path):
-            if len(path) == k:
-                res.append(path[:])
-                return
+        while True:
+            res.append(comb[:])
 
-            for i in range(start, n + 1):
-                path.append(i)
-                backtrack(i + 1, path)
-                path.pop()
+            i = k - 1
+            while i >= 0 and comb[i] == n - k + i + 1:
+                i -= 1
 
-        backtrack(1, [])
+            if i < 0:
+                break
+
+            comb[i] += 1
+            for j in range(i + 1, k):
+                comb[j] = comb[j - 1] + 1
+
         return res
