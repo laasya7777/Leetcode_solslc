@@ -16,4 +16,4 @@ class Solution:
             return 1+max(lh,rh)
         help(root)
         return self.d
-        
+        543
