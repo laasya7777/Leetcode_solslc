@@ -1,6 +1,5 @@
 class Solution:
     def canTransform(self, start: str, result: str) -> bool:
-        # Rule 1: order of L and R must be same
         if start.replace('X', '') != result.replace('X', ''):
             return False
 
